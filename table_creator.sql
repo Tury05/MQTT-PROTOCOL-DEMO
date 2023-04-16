@@ -14,8 +14,8 @@ CREATE TABLE sensor (
 CREATE TABLE measurement (
    id BIGSERIAL PRIMARY KEY,
    datetime timestamp NOT NULL,
-   sensor_id VARCHAR(50) REFERENCES sensor(id),
-   value INTEGER NOT NULL
+   sensor_id VARCHAR(50) NOT NULL REFERENCES sensor(id),
+   value FLOAT NOT NULL
 );
 
 CREATE TABLE product (
@@ -26,7 +26,7 @@ CREATE TABLE product (
 
 CREATE TABLE production_batch (
    id VARCHAR(50) PRIMARY KEY,
-   product_id VARCHAR(50) REFERENCES product(id),
+   product_id VARCHAR(50) NOT NULL REFERENCES product(id),
    start_datetime timestamp NOT NULL,
    end_datetime timestamp
 );
@@ -34,9 +34,10 @@ CREATE TABLE production_batch (
 CREATE TABLE production_event (
    id BIGSERIAL PRIMARY KEY,
    datetime timestamp NOT NULL,
-   batch_id VARCHAR(50) REFERENCES production_batch(id),
+   batch_id VARCHAR(50) NOT NULL REFERENCES production_batch(id),
    type VARCHAR(50) NOT NULL,
-   description timestamp NOT NULL
+   measurement_id BIGINT REFERENCES measurement(id),
+   description VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE mapping (

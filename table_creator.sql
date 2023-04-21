@@ -1,7 +1,8 @@
 CREATE TABLE machine (
    id VARCHAR(50) PRIMARY KEY,
    name VARCHAR (50) NOT NULL,
-   manufacturer VARCHAR (50)
+   manufacturer VARCHAR (50),
+   status VARCHAR(50)
 );
 
 CREATE TABLE sensor (

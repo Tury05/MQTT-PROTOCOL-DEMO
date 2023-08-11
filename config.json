@@ -1,0 +1,15 @@
+{
+    "mqtt": {
+      "host": "localhost",
+      "port": 1883,
+      "username": "",
+      "password": ""
+    },
+    "database": {
+      "host": "localhost",
+      "port": 5432,
+      "username": "postgres",
+      "password": "TuryPostgre00",
+      "database": "postgres"
+    }
+}

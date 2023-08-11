@@ -1,6 +1,10 @@
 import paho.mqtt.client as mqtt
 import psycopg2
-import random
+import json
+
+# Abre el archivo JSON en modo de lectura
+with open('config.json', 'r') as archivo:
+    datos = json.load(archivo)
 
 temperature_sensors = ["st-0001", "st-0002", "st-0003", "st-0004", "st-0005"]
 consumption_sensors = ["sp-0001", "sp-0002", "sp-0003", "sp-0004", "sp-0005"]
@@ -14,7 +18,7 @@ def insert_data(topic, value):
     global batch_id
     global machines
 
-    conn = psycopg2.connect(database="buutech", user="postgres", password="TuryPostgre00", host="localhost", port="5432")
+    conn = psycopg2.connect(database=datos['database']['database'], user=datos['database']['username'], password=datos['database']['password'], host=datos['database']['host'], port=datos['database']['port'])
     cur = conn.cursor()
 
     match topic:
@@ -76,7 +80,7 @@ def on_message(_client, _userdata, message):
 if __name__ == '__main__':
     # Configuración del cliente MQTT y suscripción a los temas
     client = mqtt.Client()
-    client.connect("localhost", 1883, 60)
+    client.connect(datos['mqtt']['host'], datos['mqtt']['port'], 60)
 
     for sensor in temperature_sensors + consumption_sensors:
         client.subscribe(sensor, qos=1)

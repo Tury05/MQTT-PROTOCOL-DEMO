@@ -4,12 +4,17 @@ import time
 import random
 import sys
 import multiprocessing
+import json
+
+# Abre el archivo JSON en modo de lectura
+with open('config.json', 'r') as archivo:
+    datos = json.load(archivo)
 
 # Configuración del broker de MQTT
-broker_address = "localhost"
-broker_port = 1883
-broker_username = ""
-broker_password = ""
+broker_address = datos['mqtt']['host']
+broker_port = datos['mqtt']['port']
+broker_username = datos['mqtt']['username']
+broker_password = datos['mqtt']['password']
 
 # Configuración del entorno
 temperature_sensors = ["st-0001", "st-0002", "st-0003", "st-0004", "st-0005"]

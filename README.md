@@ -43,4 +43,4 @@ En el archivo `queries.sql` se incluyen algunas consultas de ejemplo.
     "password": "contraseña",
     "database": "basededatos"
   }
-}```
+}

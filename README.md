@@ -12,6 +12,14 @@ El Simulador de Envío de Datos de Sensores a Base de Datos a través del Protoc
 
 - **Configuración Flexible:** Personaliza fácilmente la frecuencia de generación de datos, los valores límite y los detalles de conexión MQTT y de la base de datos.
 
+## Arquitectura MQTT
+
+![Arquitectura MQTT](imagenes/mqtt.png)
+
+## Esquema ER
+
+![Esquema ER](imagenes/er.png)
+
 ## Instalación y Uso
 
 1. Clona este repositorio en tu máquina local.
